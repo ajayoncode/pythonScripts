@@ -63,15 +63,12 @@ def test_google_search():
         except:
             print('@@ Failed in Normal login')
         
-        
         time.sleep(50)
         print('saving cookies!')
         selectAccountOption = driver.find_element(By.XPATH,'//*[@id="sc-content-container"]/div/div[1]/div[2]/div/button[1]')
         selectAccountOption.click()
         selectAccount = driver.find_element(By.XPATH,'/html/body/div[1]/div[2]/div/div[1]/div[3]/button')
         selectAccount.click()
-
-        
         time.sleep(10)
         save_cookie(driver,_CookiePath)
         
