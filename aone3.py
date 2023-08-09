@@ -23,6 +23,7 @@ def load_cookie(driver, path):
                     if 'expiry' in cookie:
                         del cookie['expiry']
                     driver.add_cookie(cookie)
+                    time.sleep(1)
                 
             time.sleep(6)    
     
@@ -37,14 +38,11 @@ def test_google_search():
         # Initialize the WebDriver
         
         driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-        driver.get('https://vendorcentral.amazon.co.uk')
+        driver.get(_URL)
         driver.delete_all_cookies()
-        driver.get(_URL)
-        
         load_cookie(driver,_CookiePath)
-
         driver.refresh()
-        driver.get(_URL)
+        # driver.get(_URL)
         print('@@C1')
         
         
@@ -63,6 +61,7 @@ def test_google_search():
         except:
             print('@@ Failed in Normal login')
         
+        save_cookie(driver,_CookiePath)
         time.sleep(50)
         print('saving cookies!')
         selectAccountOption = driver.find_element(By.XPATH,'//*[@id="sc-content-container"]/div/div[1]/div[2]/div/button[1]')
@@ -70,7 +69,7 @@ def test_google_search():
         selectAccount = driver.find_element(By.XPATH,'/html/body/div[1]/div[2]/div/div[1]/div[3]/button')
         selectAccount.click()
         time.sleep(10)
-        save_cookie(driver,_CookiePath)
+        # save_cookie(driver,_CookiePath)
         
         print('Test passed!')
     except Exception as e:
