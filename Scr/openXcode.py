@@ -1,6 +1,8 @@
 # Debug in Xcode
 # Ask to change simulator and debug xcode and open visual studio 
-# First waiting for 10 sec for input otherwise open default 
+# First waiting for 10 sec for input otherwise open default
+# Now its ask user want to arch or debug in xCode, will arch in terminal as given path
+ 
 
 import time
 import subprocess
@@ -65,6 +67,15 @@ def automateXcodeActions(project_path, workspace_path, scheme_name, udid_device)
     except Exception as e:
         print(f"Error automating Xcode actions: {e}")
 
+def createArchieve(project_path,workspace_path,scheme_name):
+    change_simulator('Any iOS Device (arm64)')
+    print('Creating archive...')
+    # Archive the project using xcodebuild
+    try:
+        archive_command = ["xcodebuild", "-workspace", workspace_path, "-scheme", scheme_name, "archive", "-archivePath", "/Users/ajaymangal/Downloads"]
+        subprocess.run(archive_command)
+    except Exception as e:
+        print(f"Error automating Xcode Archive: {e}")
 
 def change_simulator(device_name):
     applescript = f'''
@@ -85,17 +96,29 @@ app_name = 'Visual Studio Code'
 project_path = '/Users/ajaymangal/Master/RN_Project2.0/RN_Attenteo'
 iphone_11_simulator = 'iPhone 11'
 bundleId='com.attenteo'
-scheme_name='CreditSmartUK'
+scheme_name='attenteo'
 workspace_path='/Users/ajaymangal/Master/RN_Project2.0/RN_Attenteo/ios/attenteo.xcworkspace'
-
+forArchieve= 'Any iOS Device (arm64)'
 applescript_code = f'''
           tell application "System Events"
            keystroke "f" using {{command down, option down}}
             end tell
         '''
-automateXcodeActions(project_path, workspace_path, scheme_name, iphone_11_simulator)
+
+
+
+
+
+mainInput = input('Enter "arch" for creating Archive, or anything else to debug in Xcode: ')
+
+if mainInput == 'arch':
+    createArchieve(project_path, workspace_path, scheme_name)
+else: 
+    automateXcodeActions(project_path, workspace_path, scheme_name, iphone_11_simulator)
+
+print('Success!!')
 time.sleep(7)
-openAppWithProject(app_name, project_path)
+# openAppWithProject(app_name, project_path)
 time.sleep(3)
 # runAppleScript(applescript_code)
 # pressKey('122')
