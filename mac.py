@@ -124,14 +124,14 @@ bundleId='com.attenteo'
 scheme_name='attenteo'
 workspace_path='/Users/ajaymangal/Master/RN_Project2.0/RN_Attenteo/ios/attenteo.xcworkspace'
 
-# openAppWithProject(app_name, project_path)
-# runCmdInTerminal(project_path,'xcrun simctl list devices')
-# Open the project in Xcode
-#openProjectInXcode(project_path,'/Users/ajaymangal/Master/RN_Project2.0/RN_Attenteo/ios/attenteo.xcworkspace',udidDevice)
-# automateXcodeActions(workspace_path, workspace_path, scheme_name, udid_device)
-# keyboard_shortcut_code = '''
-#     tell application "System Events"
-#         keystroke "F1" using command down
-#     end tell
-# '''
-# pressKey('122')
+openAppWithProject(app_name, project_path)
+runCmdInTerminal(project_path,'xcrun simctl list devices')
+Open the project in Xcode
+openProjectInXcode(project_path,'/Users/ajaymangal/Master/RN_Project2.0/RN_Attenteo/ios/attenteo.xcworkspace',udidDevice)
+automateXcodeActions(workspace_path, workspace_path, scheme_name, udid_device)
+keyboard_shortcut_code = '''
+    tell application "System Events"
+        keystroke "F1" using command down
+    end tell
+'''
+pressKey('122')

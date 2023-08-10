@@ -108,7 +108,7 @@ applescript_code = f'''
 # runCmdInTerminal(project_path,'xcrun simctl list devices')
 # Open the project in Xcode
 # openProjectInXcode(project_path,'/Users/ajaymangal/Master/RN_Project2.0/RN_Attenteo/ios/attenteo.xcworkspace',udidDevice)
-automateXcodeActions(project_path, workspace_path, scheme_name, udid_device)
+openProjectInXcode(project_path, workspace_path, scheme_name, udid_device)
 time.sleep(7)
 openAppWithProject(app_name, project_path)
 time.sleep(3)
