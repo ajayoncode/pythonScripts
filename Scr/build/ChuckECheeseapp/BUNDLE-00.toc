@@ -1,3 +1,0 @@
-([('ChuckECheeseapp',
-   '/Users/ajaymangal/Master/_Ajex/DEV/main/Python0.1/P2/Scr/dist/ChuckECheeseapp',
-   'EXECUTABLE')],)
